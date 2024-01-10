@@ -1,0 +1,23 @@
+<div class="container flex">
+    <div class="image-nav">
+        <div class="scroller" [style.background]="globals.highlightedColor"  >
+            <ul >
+                <ng-container *ngFor="let item of images | async as list">
+                    <li (click)="changeSelectedImage(item)"><span class="name">{{extractNameFromPath(item.path)}}</span> ({{item.sizes.length}}) sizes</li>
+                </ng-container>
+                <li class="upload-li"> <app-image-upload></app-image-upload> </li>
+            </ul> 
+        </div>
+     
+    </div>
+    <div class="image-display">
+        <ng-container *ngIf="selectedImage != undefined">
+            <div class="flex gap">
+                <ng-container *ngFor="let size of selectedImage!.sizes">
+                    <app-image-component imageSrc="{{adjustPath(selectedImage!.path,size.width,size.height)}}" ImageSizing="{{size.width}}x{{size.height}}"></app-image-component>
+                </ng-container>
+            </div>
+        </ng-container>
+    </div>
+        
+    </div>

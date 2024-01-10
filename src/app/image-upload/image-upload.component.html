@@ -1,0 +1,25 @@
+
+<input  type="file" hidden (change)="uploadFile($event)" #fileUpload>
+<button class="upload" (click)="fileUpload.click()">Upload</button>
+
+<ng-container *ngFor="let size of imageSizings; index as i">
+    <div class="sizing-unit">
+        <label>Sizing {{i+1}}</label>
+        <input type="number" [valueAsNumber]="size.width" placeholder="Width"  (input)="size.width= $any($event.target).value" >
+
+        <input type="number" [valueAsNumber]="size.height" placeholder="Height" (input)="size.height= $any($event.target).value">
+    </div>
+</ng-container>
+
+
+<button *ngIf="imageSizings.length > 0" class="add-button" (click) = "addSizing()">
+ +
+</button>
+
+<select *ngIf="imageSizings.length > 0" class="type-button" (change)="fillChanged($event)">
+    <ng-container *ngFor="let item of fillConsts">
+        <option  [value]="item.id">{{item.value}}</option>
+    </ng-container>
+</select>
+
+<button class="submit"  *ngIf="imageSizings.length > 0"  (click)="pushToServer()" >Create</button>

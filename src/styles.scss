@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+.flex{
+    display: flex;
+
+}
+
+.flex-warp{
+    flex-wrap: wrap;
+}
+
+.gap{
+    gap: 20px;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
