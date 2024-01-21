@@ -18,7 +18,8 @@ export class ImageListComponent {
   }
 
   adjustPath(imagePath: string, width: number, height: number){
-    return imagePath.replace(".","_"+width+"_"+height+".")
+    let end = imagePath.substring(imagePath.lastIndexOf("."),imagePath.length)
+    return imagePath.replace(end,"_"+width+"_"+height+end)
   }
 
   changeSelectedImage(image: Image){
@@ -27,6 +28,6 @@ export class ImageListComponent {
   }
 
   extractNameFromPath(path:string){
-    return path.substring(path.lastIndexOf('/')+1,path.indexOf('.'))
+    return path.substring(path.lastIndexOf('/')+1,path.lastIndexOf('.'))
   }
 }

@@ -5,3 +5,10 @@ export enum FillType
     Black,
     DominantColor,
 }
+
+export enum Extention
+{   
+    jpg,
+    webp,
+    png
+}

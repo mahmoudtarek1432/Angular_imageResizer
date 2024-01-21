@@ -22,4 +22,10 @@
     </ng-container>
 </select>
 
+<select *ngIf="imageSizings.length > 0" class="type-button" (change)="extentionChanged($event)">
+    <ng-container *ngFor="let item of extentionConsts">
+        <option  [value]="item.id">{{item.value}}</option>
+    </ng-container>
+</select>
+
 <button class="submit"  *ngIf="imageSizings.length > 0"  (click)="pushToServer()" >Create</button>

@@ -4,7 +4,7 @@ import { Image, ImageSizings } from './Type/Image';
 import { Observable } from 'rxjs';
 import { Globals } from './shared/global';
 import { Serializer } from '@angular/compiler';
-import { FillType } from './Type/fillType';
+import { Extention, FillType } from './Type/fillType';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +17,15 @@ export class ImageServiceService {
     return this.client.get<Image[]>(this.globals.baseUrl+"ImageResizer/FetchImages")
   }
 
-  pushImage(imageFile: File, sizings: ImageSizings[], type: FillType) : Observable<any>{
+  pushImage(imageFile: File, sizings: ImageSizings[], fillType: FillType, extentionType: Extention) : Observable<any>{
     const data= new FormData();
     data.append('file', imageFile)
     data.append('sizingsJson', JSON.stringify(sizings))
-    if(type != undefined)
-      data.append('fill', type.toString())
+    if(fillType != undefined)
+      data.append('fill', fillType.toString())
+
+    if(extentionType != undefined)
+          data.append('extention', Extention[extentionType])
 
     return this.client.post<any>(this.globals.baseUrl+"ImageResizer/UploadImage", data)
   }
