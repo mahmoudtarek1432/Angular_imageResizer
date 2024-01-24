@@ -30,6 +30,8 @@ export class ImageUploadComponent {
       this.extentionConsts.push({id: value as string, value: key as string})
     }
 
+    this.extentionType = Extention.jpg
+    
     console.log(this.fillConsts)
   }
   uploadFile(event:any){

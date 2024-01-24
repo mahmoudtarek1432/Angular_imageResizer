@@ -4,6 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class Globals{
-    baseUrl: string = "https://localhost:7142/" //"https://atharwat.com/"
+    baseUrl: string =  "https://atharwat.com/" //"https://localhost:7142/"
     highlightedColor: string|undefined; // a hex color denoting the color of the selected image
 }
